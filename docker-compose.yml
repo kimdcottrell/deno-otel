@@ -1,0 +1,46 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: images/app.Dockerfile
+      args:
+        - LOCAL_MACHINE_GID=${LOCAL_MACHINE_GID}
+    command: tail -f /dev/null
+    tty: true
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+      - "4001:4001"
+      - "4002:4002"
+      - "4003:4003"
+      - "4004:4004"
+      - "4005:4005"
+    extra_hosts:
+      - host.docker.internal:host-gateway # used in deno task webhook
+    networks:
+      - default
+  otel:
+    image: grafana/otel-lgtm:0.8.6
+    networks:
+      - default
+    volumes:
+      - lgtm:/data
+    environment:
+      GF_PATHS_DATA: /data/grafana
+      GF_GID: ${LOCAL_MACHINE_GID}
+      GF_UID: ${LOCAL_MACHINE_UID}
+    ports:
+      - "3000:3000"
+      - "4317:4317"
+      - "4318:4318"
+
+volumes:
+  lgtm:
+
+networks:
+  # Creating our own network allows us to connect between containers using their service name.
+  default:
+    driver: bridge

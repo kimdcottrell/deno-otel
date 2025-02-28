@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		// note: https://docs.deno.com/runtime/reference/ts_config_migration/
+		"lib": [
+			"dom" // the IDE will now respect MDN type checking for just this folder
+		]
+	},
+    "lint": {
+		"include": ["./"],
+		"rules": {
+            // to truly remove console messages, you need a build step
+			"include": ["no-console"]
+		}
+	}
+}

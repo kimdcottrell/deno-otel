@@ -1,0 +1,16 @@
+
+{
+  "tasks": {
+    "otel": "deno run --reload --watch -A ./otel.ts",
+    "reverse_proxy": "deno run --reload --watch -A ./reverse_proxy.ts",
+    "dev":{
+      "dependencies": ["otel"]
+    }
+	},
+	"name": "@exp/express",
+	"version": "0.1.0",
+	"exports": "./index.js", // only using this field to get the error to shut up
+  "imports": {
+    "express": "npm:express@4"
+  }
+}

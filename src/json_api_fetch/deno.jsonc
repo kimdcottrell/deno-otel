@@ -1,0 +1,12 @@
+{
+    "tasks": {
+        "dev": "OTEL_SERVICE_NAME='json_api_fetch' deno run --unstable-kv --unstable-otel --reload --watch --allow-env --allow-net --allow-read ./main.ts"
+    },
+    "name": "@exp/json-api-fetch",
+    "version": "0.1.0",
+    "exports": "./main.js", // only using this field to get the error to shut up
+    "imports": {
+        "@oak/acorn": "jsr:@oak/acorn@^1.1.1",
+        "express": "npm:express@5.0.1"
+    }
+}

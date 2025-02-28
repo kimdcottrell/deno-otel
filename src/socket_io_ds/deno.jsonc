@@ -1,0 +1,11 @@
+{
+	"tasks": {
+		"dev": "OTEL_SERVICE_NAME='socket_io_ds' deno run --unstable-otel --reload --watch --allow-env --allow-net --allow-read ./main.ts"
+	},
+	"name": "@exp/socket-io-ds",
+	"version": "0.1.0",
+	"exports": "./index.js", // only using this field to get the error to shut up
+	"imports": {
+		"@socket_io/deno": "https://deno.land/x/socket_io@0.2.1/mod.ts"
+	}
+}
