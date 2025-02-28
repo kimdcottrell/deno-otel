@@ -155,6 +155,7 @@ tracer.startActiveSpan('rollTheDice', (parentSpan: Span) => {
 	}
 
 	app.get('/rolldice', (req, res) => {
+		// NOTE: if you use startSpan, the logging link breaks
 		// const ctx = trace.setSpan(context.active(), parentSpan);
 		// const span = tracer.startSpan(`${req.method} ${req.url}`, {
 		// 	kind: 2,
