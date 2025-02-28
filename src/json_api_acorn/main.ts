@@ -19,6 +19,9 @@ router.get('/', (ctx) => {
 	return { hello: 'world' };
 });
 
-router.get('/books/:id', (ctx) => BOOKS[ctx.params.id]);
+router.get('/books/:id', (ctx) => {
+	console.log(`{books: ${JSON.stringify(BOOKS[ctx.params.id])}}`);
+	return BOOKS[ctx.params.id];
+});
 
 router.listen({ port: 4002 });

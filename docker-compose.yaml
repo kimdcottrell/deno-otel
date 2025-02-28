@@ -28,6 +28,7 @@ services:
       - default
     volumes:
       - lgtm:/data
+      - ./grafana-datasources.yaml:grafana/conf/provisioning/datasources/grafana-datasources.yaml
     environment:
       GF_PATHS_DATA: /data/grafana
       GF_GID: ${LOCAL_MACHINE_GID}
@@ -39,6 +40,7 @@ services:
 
 volumes:
   lgtm:
+
 
 networks:
   # Creating our own network allows us to connect between containers using their service name.
