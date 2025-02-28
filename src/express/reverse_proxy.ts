@@ -16,7 +16,8 @@ app.listen(4005, () => {
 const toUrl = new URL('http://0.0.0.0:4005');
 console.log('Proxying ' + toUrl.href);
 
-// we want otel and it seems deno does not respect the npm otel collector, we MUST use the builtin stuff
+// TODO: this was a wild idea to shove express into Deno.serve for bultin otel hopes and dreams.
+//       maybe come back to it? idk. feels absurd.
 Deno.serve({
 	port: 4004,
 }, async (request) => {
